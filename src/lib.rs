@@ -347,41 +347,29 @@ pub fn plan_changes(
     let plan = synthesize_source(source, bindings, gate_with)?;
     let cfg = magma_config::Config::from_json(plan.terraform_json)
         .map_err(|e| LavaError::Render(format!("magma-config parse: {e}")))?;
-    let state = magma_types::State {
-        version: 4,
-        terraform_version: "1.5.0".to_string(),
-        serial: 0,
-        lineage: uuid::Uuid::nil(),
-        outputs: std::collections::HashMap::new(),
-        resources: Vec::new(),
-    };
-    let typed_plan = magma_plan::plan(&cfg, &state)
-        .map_err(|e| LavaError::Render(format!("magma plan: {e}")))?;
-    Ok(typed_plan
-        .resource_changes
-        .into_iter()
-        .map(planned_change_from_resource_change)
-        .collect())
+    Ok(empty_state_diff(&cfg))
 }
 
-fn planned_change_from_resource_change(rc: magma_types::ResourceChange) -> PlannedChange {
-    let address = format!("{}.{}", rc.address.type_id.0, rc.address.name);
-    let kind = match rc.action {
-        magma_types::Action::NoOp => "no_op",
-        magma_types::Action::Create => "create",
-        magma_types::Action::Read => "read",
-        magma_types::Action::Update => "update",
-        magma_types::Action::Replace => "replace",
-        magma_types::Action::Delete => "delete",
-        magma_types::Action::Forget => "delete",
-        magma_types::Action::CreateThenDelete => "replace",
-        magma_types::Action::DeleteThenCreate => "replace",
-    };
-    PlannedChange {
-        address,
-        attribute: "*".to_string(),
-        kind: kind.to_string(),
-        before: rc.before.map(|v| v.to_string()),
-        after: rc.after.map(|v| v.to_string()),
+/// Hand-rolled empty-state diff. Walks the parsed Config's resources
+/// + emits one Create per `<type_id>.<name>` pair. Stand-in for
+/// magma::plan::plan against an empty State — same result for the
+/// no-state-yet case the operator hits today.
+///
+/// L8.3 wires a real State backend; that's when we replace this
+/// with a real magma::plan::plan call (and accept the protoc dep
+/// or move the planning out-of-process).
+fn empty_state_diff(cfg: &magma_config::Config) -> Vec<PlannedChange> {
+    let mut out = Vec::new();
+    for (type_id, by_name) in &cfg.resources {
+        for (name, body) in by_name {
+            out.push(PlannedChange {
+                address: format!("{type_id}.{name}"),
+                attribute: "*".to_string(),
+                kind: "create".to_string(),
+                before: None,
+                after: Some(body.to_string()),
+            });
+        }
     }
+    out
 }
