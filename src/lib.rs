@@ -33,8 +33,8 @@
 use indexmap::IndexMap;
 use lava_core::{Architecture, Synthesizer, TerraformJson};
 use lava_runtime::{
-    pick_runtime_for_path, ArtifactBinding, ArtifactInput, EmbeddedRuntime, EvaluationResult,
-    Interface, RuntimeError,
+    pick_runtime_for_path, ArtifactBinding, EmbeddedRuntime, EvaluationResult, Interface,
+    RuntimeError,
 };
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
@@ -135,25 +135,26 @@ pub enum LavaError {
 /// See [`LavaError`] — wraps every upstream failure mode in one typed
 /// enum.
 pub fn synthesize(args: &LavaPlanArgs) -> Result<LavaPlan, LavaError> {
-    let source = std::fs::read_to_string(&args.path).map_err(|e| LavaError::Io {
-        path: args.path.clone(),
-        source: e,
-    })?;
+    // Probe readability up front so a missing file surfaces as the
+    // typed LavaError::Io variant the caller can match on (the
+    // runtime's path helper would surface this as RuntimeError::Io,
+    // which is less actionable for CLI output).
+    if !args.path.exists() {
+        return Err(LavaError::Io {
+            path: args.path.clone(),
+            source: std::io::Error::from(std::io::ErrorKind::NotFound),
+        });
+    }
 
     let rt = select_runtime(args)?;
-    let input = ArtifactInput {
-        source,
-        bindings: args.bindings.clone(),
-        name: args.path.file_stem().and_then(|s| s.to_str()).map(String::from),
-    };
 
     let result: EvaluationResult = match &args.gate_with {
         Some(iface_name) => {
             let iface = bundled_interface_for(iface_name)
                 .ok_or_else(|| LavaError::UnknownInterface(iface_name.clone()))?;
-            rt.evaluate_with_schema(&input, &iface)?
+            rt.evaluate_path_with_schema(&args.path, args.bindings.clone(), &iface)?
         }
-        None => rt.evaluate(&input)?,
+        None => rt.evaluate_path(&args.path, args.bindings.clone())?,
     };
 
     let tf = Synthesizer::<TerraformJson>::synthesize(&result.architecture)

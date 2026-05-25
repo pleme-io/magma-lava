@@ -98,8 +98,8 @@ dependencies = [
 
 [[package]]
 name = "lava-runtime"
-version = "0.1.1"
-source = "git+https://github.com/pleme-io/lava-runtime?branch=main#ccf7c81a8d83edd2cfff3c3e356048b956bf1a91"
+version = "0.1.2"
+source = "git+https://github.com/pleme-io/lava-runtime?branch=main#a8d35adcaea7f03c60c9dba5c9b23278449b2e60"
 dependencies = [
  "indexmap",
  "lava-core",
