@@ -132,6 +132,17 @@ fn typed_interface_lookup_returns_bundled_entries() {
 }
 
 #[test]
+fn lava_plan_emits_crossplane_yaml_for_same_architecture() {
+    let path = tempfile_with(VPC_TLISP, "demo-vpc");
+    let plan = synthesize(&LavaPlanArgs::for_path(&path)).unwrap();
+    let yaml = plan.crossplane_yaml().unwrap();
+    // Same Architecture flows through to the second target.
+    assert!(yaml.contains("kind: CompositeResourceDefinition"));
+    assert!(yaml.contains("kind: Composition"));
+    assert!(yaml.contains("cidr_block: 10.0.0.0/16"));
+}
+
+#[test]
 fn synthesize_records_runtime_kind_for_plan_receipt() {
     let path = tempfile_with(VPC_TLISP, "demo-vpc");
     let plan = synthesize(&LavaPlanArgs::for_path(&path)).unwrap();

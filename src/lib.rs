@@ -31,7 +31,7 @@
 #![allow(clippy::module_name_repetitions)]
 
 use indexmap::IndexMap;
-use lava_core::{Architecture, Synthesizer, TerraformJson};
+use lava_core::{Architecture, CrossplaneYaml, Synthesizer, TerraformJson};
 use lava_runtime::{
     pick_runtime_for_path, ArtifactBinding, EmbeddedRuntime, EvaluationResult, Interface,
     RuntimeError,
@@ -107,6 +107,19 @@ pub struct LavaPlan {
     pub architecture: Architecture,
     pub runtime_kind: String,
     pub diagnostics: Vec<lava_runtime::Diagnostic>,
+}
+
+impl LavaPlan {
+    /// Lazy re-render to Crossplane YAML (XRD + Composition pair).
+    /// Same Architecture, second target — proves the multi-renderer
+    /// pattern composes without extra plumbing.
+    ///
+    /// # Errors
+    /// Bubbles up [`LavaError::Render`] when the typed renderer fails.
+    pub fn crossplane_yaml(&self) -> Result<String, LavaError> {
+        Synthesizer::<CrossplaneYaml>::synthesize(&self.architecture)
+            .map_err(|e| LavaError::Render(e.to_string()))
+    }
 }
 
 #[derive(Debug, Error)]
