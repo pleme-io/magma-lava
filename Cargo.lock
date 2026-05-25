@@ -34,8 +34,8 @@ checksum = "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
 
 [[package]]
 name = "lava-arch"
-version = "0.1.1"
-source = "git+https://github.com/pleme-io/lava-arch?branch=main#89252b1064356af4f529a1a34b3f78bca72bb184"
+version = "0.1.2"
+source = "git+https://github.com/pleme-io/lava-arch?branch=main#719375c6a769647da6b2abf79e968085bc6f1127"
 dependencies = [
  "indexmap",
  "lava-core",
@@ -46,8 +46,8 @@ dependencies = [
 
 [[package]]
 name = "lava-architectures"
-version = "0.1.4"
-source = "git+https://github.com/pleme-io/lava-architectures?branch=main#1501f7f0c4bbba20fe425ecbc8f432a0d00ef1db"
+version = "0.1.7"
+source = "git+https://github.com/pleme-io/lava-architectures?branch=main#a43805172de58a0dce95b7e0c6e416d010b06b4b"
 dependencies = [
  "indexmap",
  "lava-arch",
@@ -73,8 +73,8 @@ dependencies = [
 
 [[package]]
 name = "lava-core"
-version = "0.1.2"
-source = "git+https://github.com/pleme-io/lava-core?branch=main#2751e3e0ea05c6ab9365141cec97e96dca59351d"
+version = "0.1.4"
+source = "git+https://github.com/pleme-io/lava-core?branch=main#bcc88e693f689ebb087de404499c536c63c59d37"
 dependencies = [
  "indexmap",
  "serde",
@@ -85,13 +85,14 @@ dependencies = [
 
 [[package]]
 name = "lava-eval"
-version = "0.1.3"
-source = "git+https://github.com/pleme-io/lava-eval?branch=main#aed07612cee0f9317b3054c4acf2b07a36f54b44"
+version = "0.1.5"
+source = "git+https://github.com/pleme-io/lava-eval?branch=main#0ea977c5168cea38a7e573bf531c53f80695ca5d"
 dependencies = [
  "indexmap",
  "lava-arch",
  "lava-core",
  "lava-schema",
+ "lava-types",
  "serde",
  "serde_json",
  "thiserror",
@@ -99,8 +100,8 @@ dependencies = [
 
 [[package]]
 name = "lava-runtime"
-version = "0.1.2"
-source = "git+https://github.com/pleme-io/lava-runtime?branch=main#a8d35adcaea7f03c60c9dba5c9b23278449b2e60"
+version = "0.1.3"
+source = "git+https://github.com/pleme-io/lava-runtime?branch=main#c2a5e08a92cdc12fe6413412cf3bc0c6732163d4"
 dependencies = [
  "indexmap",
  "lava-core",
@@ -133,7 +134,7 @@ dependencies = [
 
 [[package]]
 name = "magma-lava"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "indexmap",
  "lava-architectures",
