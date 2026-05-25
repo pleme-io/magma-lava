@@ -213,7 +213,7 @@ pub enum LavaSource {
 /// ```ignore
 /// let plan = magma_lava::synthesize_source(&source, &bindings, gate)?;
 /// let cfg  = magma::config::parse(plan.terraform_json)?;
-/// let p    = magma::plan::plan(&cfg, &state)?;
+/// let p    = magma_plan::plan(&cfg, &state)?;
 /// magma::apply::apply(&p, &mut state)?;
 /// ```
 ///
@@ -313,7 +313,7 @@ fn select_runtime(args: &LavaPlanArgs) -> Result<Box<dyn EmbeddedRuntime>, LavaE
 /// magma's `ResourceChange` shape but normalised onto the
 /// per-attribute granularity drift consumers expect.
 ///
-/// `magma::types::Action::*` collapses to a stable string kind so
+/// `magma_types::Action::*` collapses to a stable string kind so
 /// downstream consumers (lava-drift, lava-anomaly) can match without
 /// pulling magma-types into their own dep graphs.
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, Eq)]
@@ -345,9 +345,9 @@ pub fn plan_changes(
     gate_with: Option<&str>,
 ) -> Result<Vec<PlannedChange>, LavaError> {
     let plan = synthesize_source(source, bindings, gate_with)?;
-    let cfg = magma::config::Config::from_json(plan.terraform_json)
+    let cfg = magma_config::Config::from_json(plan.terraform_json)
         .map_err(|e| LavaError::Render(format!("magma-config parse: {e}")))?;
-    let state = magma::types::State {
+    let state = magma_types::State {
         version: 4,
         terraform_version: "1.5.0".to_string(),
         serial: 0,
@@ -355,7 +355,7 @@ pub fn plan_changes(
         outputs: std::collections::HashMap::new(),
         resources: Vec::new(),
     };
-    let typed_plan = magma::plan::plan(&cfg, &state)
+    let typed_plan = magma_plan::plan(&cfg, &state)
         .map_err(|e| LavaError::Render(format!("magma plan: {e}")))?;
     Ok(typed_plan
         .resource_changes
@@ -364,18 +364,18 @@ pub fn plan_changes(
         .collect())
 }
 
-fn planned_change_from_resource_change(rc: magma::types::ResourceChange) -> PlannedChange {
+fn planned_change_from_resource_change(rc: magma_types::ResourceChange) -> PlannedChange {
     let address = format!("{}.{}", rc.address.type_id.0, rc.address.name);
     let kind = match rc.action {
-        magma::types::Action::NoOp => "no_op",
-        magma::types::Action::Create => "create",
-        magma::types::Action::Read => "read",
-        magma::types::Action::Update => "update",
-        magma::types::Action::Replace => "replace",
-        magma::types::Action::Delete => "delete",
-        magma::types::Action::Forget => "delete",
-        magma::types::Action::CreateThenDelete => "replace",
-        magma::types::Action::DeleteThenCreate => "replace",
+        magma_types::Action::NoOp => "no_op",
+        magma_types::Action::Create => "create",
+        magma_types::Action::Read => "read",
+        magma_types::Action::Update => "update",
+        magma_types::Action::Replace => "replace",
+        magma_types::Action::Delete => "delete",
+        magma_types::Action::Forget => "delete",
+        magma_types::Action::CreateThenDelete => "replace",
+        magma_types::Action::DeleteThenCreate => "replace",
     };
     PlannedChange {
         address,

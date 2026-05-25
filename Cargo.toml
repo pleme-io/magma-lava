@@ -25,5 +25,7 @@ lava-eval = { git = "https://github.com/pleme-io/lava-eval", branch = "main" }
 lava-schema = { git = "https://github.com/pleme-io/lava-schema", branch = "main" }
 lava-runtime = { git = "https://github.com/pleme-io/lava-runtime", branch = "main" }
 lava-architectures = { git = "https://github.com/pleme-io/lava-architectures", branch = "main" }
-magma = { git = "https://github.com/pleme-io/magma", branch = "main" }
+magma-types = { git = "https://github.com/pleme-io/magma", branch = "main" }
+magma-config = { git = "https://github.com/pleme-io/magma", branch = "main" }
+magma-plan = { git = "https://github.com/pleme-io/magma", branch = "main" }
 uuid = { version = "1", features = ["v4"] }

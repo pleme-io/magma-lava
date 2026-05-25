@@ -842,71 +842,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "616ec5685824bcc94416c6d4a7a446eea774a31efd7062c8480ba6fd06d7a6e5"
 
 [[package]]
-name = "magma"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "magma-apply",
- "magma-attest",
- "magma-backend",
- "magma-config",
- "magma-graph",
- "magma-mcp",
- "magma-pangea",
- "magma-plan",
- "magma-plugin",
- "magma-protocol",
- "magma-providers",
- "magma-state",
- "magma-types",
-]
-
-[[package]]
-name = "magma-apply"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "async-trait",
- "chrono",
- "futures",
- "hex",
- "magma-attest",
- "magma-config",
- "magma-graph",
- "magma-plan",
- "magma-plugin",
- "magma-state",
- "magma-types",
- "serde",
- "serde_json",
- "shigoto",
- "thiserror",
- "tokio",
- "tracing",
- "uuid",
-]
-
-[[package]]
-name = "magma-arch-test"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "chrono",
- "hex",
- "magma-config",
- "magma-pangea",
- "magma-plan",
- "magma-state",
- "magma-test-laws",
- "magma-types",
- "serde",
- "serde_json",
- "tempfile",
- "thiserror",
- "tokio",
-]
-
-[[package]]
 name = "magma-attest"
 version = "0.1.0"
 source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
@@ -948,46 +883,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "magma-converge"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "async-trait",
- "blake3",
- "chrono",
- "hex",
- "magma-apply",
- "magma-backend",
- "magma-config",
- "magma-plan",
- "magma-state",
- "magma-types",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tracing",
-]
-
-[[package]]
-name = "magma-flow"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "hex",
- "magma-backend",
- "magma-config",
- "magma-pangea",
- "magma-plan",
- "magma-types",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tracing",
-]
-
-[[package]]
 name = "magma-graph"
 version = "0.1.0"
 source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
@@ -1008,70 +903,13 @@ dependencies = [
  "lava-eval",
  "lava-runtime",
  "lava-schema",
- "magma",
+ "magma-config",
+ "magma-plan",
+ "magma-types",
  "serde",
  "serde_json",
  "thiserror",
  "uuid",
-]
-
-[[package]]
-name = "magma-mcp"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "async-trait",
- "hex",
- "magma-arch-test",
- "magma-backend",
- "magma-config",
- "magma-flow",
- "magma-migrate",
- "magma-pangea",
- "magma-plan",
- "magma-state",
- "magma-types",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tracing",
-]
-
-[[package]]
-name = "magma-migrate"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "blake3",
- "chrono",
- "hex",
- "magma-state",
- "magma-types",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tracing",
- "uuid",
-]
-
-[[package]]
-name = "magma-pangea"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "async-trait",
- "magma-config",
- "magma-plan",
- "magma-state",
- "magma-types",
- "petgraph 0.6.5",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tracing",
 ]
 
 [[package]]
@@ -1134,20 +972,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "magma-providers"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "magma-plugin",
- "magma-types",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tracing",
-]
-
-[[package]]
 name = "magma-state"
 version = "0.1.0"
 source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
@@ -1161,23 +985,6 @@ dependencies = [
  "tokio",
  "tracing",
  "uuid",
-]
-
-[[package]]
-name = "magma-test-laws"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/magma?branch=main#246512df318f4a01b658949755a794ac823b1c23"
-dependencies = [
- "magma-apply",
- "magma-config",
- "magma-converge",
- "magma-flow",
- "magma-plan",
- "magma-state",
- "magma-types",
- "serde",
- "serde_json",
- "tokio",
 ]
 
 [[package]]
@@ -1747,103 +1554,6 @@ dependencies = [
  "ryu",
  "serde",
  "unsafe-libyaml",
-]
-
-[[package]]
-name = "shigoto"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/shigoto#b0ea356cca6aad6d28181ce86cc0cbd242ac218c"
-dependencies = [
- "shigoto-budget",
- "shigoto-dag",
- "shigoto-emit",
- "shigoto-gate",
- "shigoto-retry",
- "shigoto-scheduler",
- "shigoto-types",
-]
-
-[[package]]
-name = "shigoto-budget"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/shigoto#b0ea356cca6aad6d28181ce86cc0cbd242ac218c"
-dependencies = [
- "serde",
- "shigoto-types",
- "thiserror",
-]
-
-[[package]]
-name = "shigoto-dag"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/shigoto#b0ea356cca6aad6d28181ce86cc0cbd242ac218c"
-dependencies = [
- "petgraph 0.6.5",
- "serde",
- "shigoto-types",
- "thiserror",
-]
-
-[[package]]
-name = "shigoto-emit"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/shigoto#b0ea356cca6aad6d28181ce86cc0cbd242ac218c"
-dependencies = [
- "async-trait",
- "serde",
- "serde_json",
- "shigoto-types",
- "tracing",
-]
-
-[[package]]
-name = "shigoto-gate"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/shigoto#b0ea356cca6aad6d28181ce86cc0cbd242ac218c"
-dependencies = [
- "shigoto-dag",
- "shigoto-types",
-]
-
-[[package]]
-name = "shigoto-retry"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/shigoto#b0ea356cca6aad6d28181ce86cc0cbd242ac218c"
-dependencies = [
- "serde",
- "shigoto-types",
-]
-
-[[package]]
-name = "shigoto-scheduler"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/shigoto#b0ea356cca6aad6d28181ce86cc0cbd242ac218c"
-dependencies = [
- "anyhow",
- "async-trait",
- "chrono",
- "shigoto-budget",
- "shigoto-dag",
- "shigoto-emit",
- "shigoto-gate",
- "shigoto-retry",
- "shigoto-types",
- "thiserror",
- "tokio",
- "tracing",
-]
-
-[[package]]
-name = "shigoto-types"
-version = "0.1.0"
-source = "git+https://github.com/pleme-io/shigoto#b0ea356cca6aad6d28181ce86cc0cbd242ac218c"
-dependencies = [
- "async-trait",
- "chrono",
- "schemars",
- "serde",
- "serde_json",
- "thiserror",
 ]
 
 [[package]]
