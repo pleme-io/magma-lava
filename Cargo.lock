@@ -35,7 +35,7 @@ checksum = "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
 [[package]]
 name = "lava-arch"
 version = "0.1.2"
-source = "git+https://github.com/pleme-io/lava-arch?branch=main#719375c6a769647da6b2abf79e968085bc6f1127"
+source = "git+https://github.com/pleme-io/lava-arch?branch=main#81aceaba14463873bb7eddf901bc37911b527644"
 dependencies = [
  "indexmap",
  "lava-core",
@@ -46,8 +46,8 @@ dependencies = [
 
 [[package]]
 name = "lava-architectures"
-version = "0.1.7"
-source = "git+https://github.com/pleme-io/lava-architectures?branch=main#a43805172de58a0dce95b7e0c6e416d010b06b4b"
+version = "0.1.12"
+source = "git+https://github.com/pleme-io/lava-architectures?branch=main#a8c5e849b7e861fbcd31683ea4c8550f57170323"
 dependencies = [
  "indexmap",
  "lava-arch",
@@ -64,7 +64,7 @@ dependencies = [
 [[package]]
 name = "lava-contracts"
 version = "0.1.1"
-source = "git+https://github.com/pleme-io/lava-contracts?branch=main#d0eecbe15702a147c9057e70ff74f847f4d71718"
+source = "git+https://github.com/pleme-io/lava-contracts?branch=main#13ec7e5a1c133c08567aab029a4f06d03dfc8ebb"
 dependencies = [
  "indexmap",
  "lava-core",
@@ -73,8 +73,8 @@ dependencies = [
 
 [[package]]
 name = "lava-core"
-version = "0.1.4"
-source = "git+https://github.com/pleme-io/lava-core?branch=main#bcc88e693f689ebb087de404499c536c63c59d37"
+version = "0.1.5"
+source = "git+https://github.com/pleme-io/lava-core?branch=main#0e436b0daa4de3d651d9f076339048bc4b9963c6"
 dependencies = [
  "indexmap",
  "serde",
@@ -85,8 +85,8 @@ dependencies = [
 
 [[package]]
 name = "lava-eval"
-version = "0.1.5"
-source = "git+https://github.com/pleme-io/lava-eval?branch=main#0ea977c5168cea38a7e573bf531c53f80695ca5d"
+version = "0.1.7"
+source = "git+https://github.com/pleme-io/lava-eval?branch=main#6427102543b0a36a1923a9c9e077c47243ae1c84"
 dependencies = [
  "indexmap",
  "lava-arch",
@@ -114,8 +114,8 @@ dependencies = [
 
 [[package]]
 name = "lava-schema"
-version = "0.1.1"
-source = "git+https://github.com/pleme-io/lava-schema?branch=main#9366c7db071ac8476f3c75085281b6a6bec0168d"
+version = "0.1.2"
+source = "git+https://github.com/pleme-io/lava-schema?branch=main#417f21ba25c97061ba3ce18879a803fd595f33d1"
 dependencies = [
  "indexmap",
  "lava-types",
@@ -126,7 +126,7 @@ dependencies = [
 [[package]]
 name = "lava-types"
 version = "0.1.1"
-source = "git+https://github.com/pleme-io/lava-types?branch=main#961bf4c24eec994c4cd7557a5fc6a3522928c455"
+source = "git+https://github.com/pleme-io/lava-types?branch=main#55484f2312008614740bf23c143a67d70edd8e6c"
 dependencies = [
  "serde",
  "thiserror",

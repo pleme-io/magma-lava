@@ -149,3 +149,67 @@ fn synthesize_records_runtime_kind_for_plan_receipt() {
     assert_eq!(plan.runtime_kind, "lava");
     assert!(plan.diagnostics.is_empty()); // happy path = silent
 }
+
+// ── Source-aware façade tests (W4.2) ────────────────────────────────
+
+#[test]
+fn synthesize_inline_renders_terraform_json_from_in_memory_source() {
+    use indexmap::IndexMap;
+    let src = r#"
+        (deflava-architecture demo
+          :inputs ((:cidr "10.42.0.0/16"))
+          :resources ((aws_vpc "main" :cidr-block "{cidr}")))
+    "#;
+    let plan = magma_lava::synthesize_inline(src, IndexMap::new(), None).unwrap();
+    assert!(plan.terraform_json["resource"]["aws_vpc"]["main"].is_object());
+    assert_eq!(plan.runtime_kind, "lava");
+}
+
+#[test]
+fn synthesize_source_dispatches_inline_variant() {
+    use indexmap::IndexMap;
+    let source = magma_lava::LavaSource::Inline {
+        inline: r#"
+            (deflava-architecture demo
+              :inputs ((:cidr "10.42.0.0/16"))
+              :resources ((aws_vpc "main" :cidr-block "{cidr}")))
+        "#
+        .to_string(),
+    };
+    let plan = magma_lava::synthesize_source(&source, &IndexMap::new(), None).unwrap();
+    assert!(plan.terraform_json["resource"]["aws_vpc"]["main"].is_object());
+}
+
+#[test]
+fn synthesize_source_dispatches_bundled_variant() {
+    use indexmap::IndexMap;
+    let source = magma_lava::LavaSource::Bundled {
+        name: "aws-vpc-network".to_string(),
+    };
+    let plan = magma_lava::synthesize_source(&source, &IndexMap::new(), None).unwrap();
+    assert!(plan.terraform_json["resource"]["aws_vpc"].is_object());
+    assert_eq!(plan.runtime_kind, "lava");
+}
+
+#[test]
+fn synthesize_source_bundled_unknown_name_surfaces_typed_error() {
+    use indexmap::IndexMap;
+    let source = magma_lava::LavaSource::Bundled {
+        name: "does-not-exist".to_string(),
+    };
+    let err = magma_lava::synthesize_source(&source, &IndexMap::new(), None).unwrap_err();
+    matches!(err, magma_lava::LavaError::UnknownInterface(_));
+}
+
+#[test]
+fn synthesize_inline_with_gate_validates_typed_interface() {
+    use indexmap::IndexMap;
+    let src = r#"
+        (deflava-architecture aws-vpc-network
+          :inputs ((:cidr "10.0.0.0/16"))
+          :resources ((aws_vpc "main" :cidr-block "{cidr}")))
+    "#;
+    // Use bundled `aws-vpc-network` interface as the gate.
+    let plan = magma_lava::synthesize_inline(src, IndexMap::new(), Some("aws-vpc-network"));
+    assert!(plan.is_ok(), "expected gate-pass on bundled aws-vpc-network");
+}

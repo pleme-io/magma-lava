@@ -188,6 +188,107 @@ pub fn typed_interface(name: &str) -> Option<TypedInterface> {
     bundled_interface_for(name)
 }
 
+/// Typed source descriptor for [`synthesize_source`] — the
+/// operator-facing entry-point that mirrors lava-operator's
+/// `LavaArchitectureSpec.source` shape. Lets in-cluster controllers
+/// (kube-rs, cron-trigger, ad-hoc CLI scripts) drive magma-lava
+/// without first materializing the source to disk.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub enum LavaSource {
+    /// .tlisp source text embedded directly.
+    Inline { inline: String },
+    /// Bundled architecture name (resolved via
+    /// `lava-architectures::load_bundled`).
+    Bundled { name: String },
+    /// On-disk path (used by the CLI; mirrors the original
+    /// [`LavaPlanArgs::path`] field).
+    Path { path: std::path::PathBuf },
+}
+
+/// Source-aware façade. Dispatches to the path / inline / bundled
+/// pipeline based on the typed `source`. Consumers compose this with
+/// magma's plan/apply trivially:
+///
+/// ```ignore
+/// let plan = magma_lava::synthesize_source(&source, &bindings, gate)?;
+/// let cfg  = magma::config::parse(plan.terraform_json)?;
+/// let p    = magma::plan::plan(&cfg, &state)?;
+/// magma::apply::apply(&p, &mut state)?;
+/// ```
+///
+/// # Errors
+/// Returns [`LavaError`] for every upstream failure mode.
+pub fn synthesize_source(
+    source: &LavaSource,
+    bindings: &IndexMap<String, ArtifactBinding>,
+    gate_with: Option<&str>,
+) -> Result<LavaPlan, LavaError> {
+    match source {
+        LavaSource::Path { path } => {
+            let mut args = LavaPlanArgs::for_path(path.clone());
+            args.bindings = bindings.clone();
+            args.gate_with = gate_with.map(std::string::ToString::to_string);
+            synthesize(&args)
+        }
+        LavaSource::Inline { inline } => synthesize_inline(inline, bindings.clone(), gate_with),
+        LavaSource::Bundled { name } => synthesize_bundled(name, bindings.clone(), gate_with),
+    }
+}
+
+/// Inline-source pipeline. Runs the .tlisp runtime against a
+/// string instead of a file — keeps in-cluster controllers
+/// disk-free.
+///
+/// # Errors
+/// See [`LavaError`].
+pub fn synthesize_inline(
+    source: &str,
+    bindings: IndexMap<String, ArtifactBinding>,
+    gate_with: Option<&str>,
+) -> Result<LavaPlan, LavaError> {
+    let rt = lava_runtime::LavaRuntime::new();
+    let input = lava_runtime::ArtifactInput {
+        source: source.to_string(),
+        bindings,
+        name: None,
+    };
+    let result = match gate_with {
+        Some(name) => {
+            let iface = bundled_interface_for(name)
+                .ok_or_else(|| LavaError::UnknownInterface(name.to_string()))?;
+            rt.evaluate_with_schema(&input, &iface)?
+        }
+        None => rt.evaluate(&input)?,
+    };
+    let tf = Synthesizer::<TerraformJson>::synthesize(&result.architecture)
+        .map_err(|e| LavaError::Render(e.to_string()))?;
+    Ok(LavaPlan {
+        terraform_json: tf,
+        architecture: result.architecture,
+        runtime_kind: rt.kind().to_string(),
+        diagnostics: result.diagnostics,
+    })
+}
+
+/// Bundled-architecture pipeline. Looks up the named architecture in
+/// lava-architectures' embedded registry, applies bindings + optional
+/// schema gate, and synthesizes.
+///
+/// # Errors
+/// Returns [`LavaError::UnknownInterface`] when the gate name doesn't
+/// resolve; surfaces upstream eval errors via [`LavaError::Runtime`].
+pub fn synthesize_bundled(
+    name: &str,
+    bindings: IndexMap<String, ArtifactBinding>,
+    gate_with: Option<&str>,
+) -> Result<LavaPlan, LavaError> {
+    let source = lava_architectures::bundled_source(name).ok_or(LavaError::UnknownInterface(
+        format!("unknown bundled architecture `{name}`"),
+    ))?;
+    synthesize_inline(&source, bindings, gate_with)
+}
+
 fn select_runtime(args: &LavaPlanArgs) -> Result<Box<dyn EmbeddedRuntime>, LavaError> {
     if let Some(kind) = &args.runtime_kind {
         // Explicit kind overrides extension-based inference. Currently
