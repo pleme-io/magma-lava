@@ -726,7 +726,7 @@ dependencies = [
 [[package]]
 name = "lava-architectures"
 version = "0.1.13"
-source = "git+https://github.com/pleme-io/lava-architectures?branch=main#e77eddca2a37deffe1723efe75e064c8a9768ff9"
+source = "git+https://github.com/pleme-io/lava-architectures?branch=main#e1def614f0f3de36e91dea66ba3d829bd16cecf0"
 dependencies = [
  "indexmap 2.14.0",
  "lava-arch",
@@ -765,7 +765,7 @@ dependencies = [
 [[package]]
 name = "lava-eval"
 version = "0.1.7"
-source = "git+https://github.com/pleme-io/lava-eval?branch=main#6427102543b0a36a1923a9c9e077c47243ae1c84"
+source = "git+https://github.com/pleme-io/lava-eval?branch=main#99edadb1653ab692cd6dfab1d5acf60868872cd3"
 dependencies = [
  "indexmap 2.14.0",
  "lava-arch",
@@ -1000,7 +1000,7 @@ dependencies = [
 
 [[package]]
 name = "magma-lava"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "indexmap 2.14.0",
  "lava-architectures",
