@@ -213,3 +213,41 @@ fn synthesize_inline_with_gate_validates_typed_interface() {
     let plan = magma_lava::synthesize_inline(src, IndexMap::new(), Some("aws-vpc-network"));
     assert!(plan.is_ok(), "expected gate-pass on bundled aws-vpc-network");
 }
+
+#[test]
+fn plan_changes_empty_architecture_returns_no_findings() {
+    use indexmap::IndexMap;
+    let source = magma_lava::LavaSource::Inline {
+        inline: r#"
+            (deflava-architecture demo
+              :inputs ()
+              :resources ())
+        "#
+        .to_string(),
+    };
+    let changes = magma_lava::plan_changes(&source, &IndexMap::new(), None).unwrap();
+    assert!(changes.is_empty(), "expected no changes, got: {changes:?}");
+}
+
+#[test]
+fn plan_changes_inline_architecture_with_resources_returns_creates() {
+    use indexmap::IndexMap;
+    let source = magma_lava::LavaSource::Inline {
+        inline: r#"
+            (deflava-architecture demo
+              :inputs ((:cidr "10.42.0.0/16"))
+              :resources ((aws_vpc "main" :cidr-block "{cidr}")))
+        "#
+        .to_string(),
+    };
+    let changes = magma_lava::plan_changes(&source, &IndexMap::new(), None).unwrap();
+    assert!(!changes.is_empty(), "expected at least one create change");
+    assert!(
+        changes.iter().any(|c| c.address == "aws_vpc.main"),
+        "expected aws_vpc.main in changes, got: {changes:?}"
+    );
+    assert!(
+        changes.iter().any(|c| c.kind == "create"),
+        "expected a create change, got: {changes:?}"
+    );
+}

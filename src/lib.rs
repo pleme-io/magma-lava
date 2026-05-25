@@ -306,3 +306,82 @@ fn select_runtime(args: &LavaPlanArgs) -> Result<Box<dyn EmbeddedRuntime>, LavaE
         path: args.path.clone(),
     })
 }
+
+// ── Magma planning bridge (L3.1 / G4) ─────────────────────────────
+
+/// One typed planned change extracted from magma's `Plan`. Mirrors
+/// magma's `ResourceChange` shape but normalised onto the
+/// per-attribute granularity drift consumers expect.
+///
+/// `magma::types::Action::*` collapses to a stable string kind so
+/// downstream consumers (lava-drift, lava-anomaly) can match without
+/// pulling magma-types into their own dep graphs.
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
+pub struct PlannedChange {
+    pub address: String,
+    pub attribute: String,
+    /// `"create" | "update" | "delete" | "replace" | "no_op" | "read"`.
+    pub kind: String,
+    pub before: Option<String>,
+    pub after: Option<String>,
+}
+
+/// Synthesize a [`LavaSource`] + run magma's plan engine against an
+/// empty `State` (treat first plan as baseline). Returns one
+/// [`PlannedChange`] per resource address × notable-attribute pair.
+///
+/// Used by lava-operator's `CallbackPlanner` as the typed magma seam
+/// — keeps the drift detector ignorant of magma internals.
+///
+/// # Errors
+/// Returns [`LavaError`] for synthesize failures and
+/// [`LavaError::Render`] for magma-config parse / magma-plan
+/// failures (collapsed under one variant to keep the public surface
+/// narrow).
+pub fn plan_changes(
+    source: &LavaSource,
+    bindings: &IndexMap<String, ArtifactBinding>,
+    gate_with: Option<&str>,
+) -> Result<Vec<PlannedChange>, LavaError> {
+    let plan = synthesize_source(source, bindings, gate_with)?;
+    let cfg = magma::config::Config::from_json(plan.terraform_json)
+        .map_err(|e| LavaError::Render(format!("magma-config parse: {e}")))?;
+    let state = magma::types::State {
+        version: 4,
+        terraform_version: "1.5.0".to_string(),
+        serial: 0,
+        lineage: uuid::Uuid::nil(),
+        outputs: std::collections::HashMap::new(),
+        resources: Vec::new(),
+    };
+    let typed_plan = magma::plan::plan(&cfg, &state)
+        .map_err(|e| LavaError::Render(format!("magma plan: {e}")))?;
+    Ok(typed_plan
+        .resource_changes
+        .into_iter()
+        .map(planned_change_from_resource_change)
+        .collect())
+}
+
+fn planned_change_from_resource_change(rc: magma::types::ResourceChange) -> PlannedChange {
+    let address = format!("{}.{}", rc.address.type_id.0, rc.address.name);
+    let kind = match rc.action {
+        magma::types::Action::NoOp => "no_op",
+        magma::types::Action::Create => "create",
+        magma::types::Action::Read => "read",
+        magma::types::Action::Update => "update",
+        magma::types::Action::Replace => "replace",
+        magma::types::Action::Delete => "delete",
+        magma::types::Action::Forget => "delete",
+        magma::types::Action::CreateThenDelete => "replace",
+        magma::types::Action::DeleteThenCreate => "replace",
+    };
+    PlannedChange {
+        address,
+        attribute: "*".to_string(),
+        kind: kind.to_string(),
+        before: rc.before.map(|v| v.to_string()),
+        after: rc.after.map(|v| v.to_string()),
+    }
+}
