@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "cargo_lock_sha256": "82a099cfd352ccf6bad2d0988c1147b80bed8b2cff4bff27aaf42331adf777d3",
+  "cargo_lock_sha256": "3e01955f95188cd863f650ba361a1aecde73941ded59380c1a4799cb34807b03",
   "target_resolves": {
     "base": {
       "arrayref-0.3.9": {
@@ -8,7 +8,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "arrayvec-0.7.6": {
+      "arrayvec-0.7.8": {
         "runtime_dependencies": [],
         "build_dependencies": [],
         "features": []
@@ -18,7 +18,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "cc-1.2.62": {
+      "cc-1.2.66": {
         "runtime_dependencies": [
           {
             "name": "find_msvc_tools",
@@ -32,7 +32,7 @@
           },
           {
             "name": "shlex",
-            "package_key": "shlex-1.3.0",
+            "package_key": "shlex-2.0.1",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -49,15 +49,17 @@
         "build_dependencies": [],
         "features": []
       },
-      "chrono-0.4.44": {
+      "chrono-0.4.45": {
         "runtime_dependencies": [
           {
             "name": "iana_time_zone",
             "package_key": "iana-time-zone-0.1.65",
             "kind": "normal",
-            "features": [],
+            "features": [
+              "fallback"
+            ],
             "uses_default_features": true,
-            "optional": false,
+            "optional": true,
             "target": "cfg(unix)",
             "tree": "target"
           },
@@ -66,7 +68,7 @@
             "package_key": "num-traits-0.2.19",
             "kind": "normal",
             "features": [],
-            "uses_default_features": true,
+            "uses_default_features": false,
             "optional": false,
             "target": null,
             "tree": "target"
@@ -121,7 +123,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "gen-macros-0.1.5": {
+      "gen-macros-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": {
         "runtime_dependencies": [
           {
             "name": "proc_macro2",
@@ -135,7 +137,7 @@
           },
           {
             "name": "quote",
-            "package_key": "quote-1.0.45",
+            "package_key": "quote-1.0.46",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -145,11 +147,11 @@
           },
           {
             "name": "syn",
-            "package_key": "syn-2.0.117",
+            "package_key": "syn-2.0.118",
             "kind": "normal",
             "features": [
-              "full",
-              "extra-traits"
+              "extra-traits",
+              "full"
             ],
             "uses_default_features": true,
             "optional": false,
@@ -160,11 +162,11 @@
         "build_dependencies": [],
         "features": []
       },
-      "gen-platform-0.1.5": {
+      "gen-platform-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": {
         "runtime_dependencies": [
           {
             "name": "gen_macros",
-            "package_key": "gen-macros-0.1.5",
+            "package_key": "gen-macros-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -174,7 +176,7 @@
           },
           {
             "name": "gen_types",
-            "package_key": "gen-types-0.1.5",
+            "package_key": "gen-types-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -228,7 +230,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "gen-types-0.1.5": {
+      "gen-types-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": {
         "runtime_dependencies": [
           {
             "name": "blake3",
@@ -242,7 +244,7 @@
           },
           {
             "name": "chrono",
-            "package_key": "chrono-0.4.44",
+            "package_key": "chrono-0.4.45",
             "kind": "normal",
             "features": [
               "serde"
@@ -310,7 +312,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "getrandom-0.4.2": {
+      "getrandom-0.4.3": {
         "runtime_dependencies": [
           {
             "name": "cfg_if",
@@ -461,7 +463,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-arch-0.1.3": {
+      "lava-arch-0.1.4-010fba4abe666f8658bffae2cd827d3f45ea593c": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -477,7 +479,7 @@
           },
           {
             "name": "lava_core",
-            "package_key": "lava-core-0.1.6",
+            "package_key": "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -521,7 +523,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-architectures-0.1.13": {
+      "lava-architectures-0.1.14-62e6627114d0a196c31130f5cbeb404ac8c5e5f3": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -537,7 +539,7 @@
           },
           {
             "name": "lava_arch",
-            "package_key": "lava-arch-0.1.3",
+            "package_key": "lava-arch-0.1.4-010fba4abe666f8658bffae2cd827d3f45ea593c",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -547,7 +549,7 @@
           },
           {
             "name": "lava_contracts",
-            "package_key": "lava-contracts-0.1.2",
+            "package_key": "lava-contracts-0.1.3-f9061f497a70df26e02ca2d15564035f02448541",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -557,7 +559,7 @@
           },
           {
             "name": "lava_core",
-            "package_key": "lava-core-0.1.6",
+            "package_key": "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -567,7 +569,7 @@
           },
           {
             "name": "lava_eval",
-            "package_key": "lava-eval-0.1.7",
+            "package_key": "lava-eval-0.1.8-d4af19fae2486900c9f664a28e26291a35c768cc",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -577,7 +579,7 @@
           },
           {
             "name": "lava_schema",
-            "package_key": "lava-schema-0.1.4",
+            "package_key": "lava-schema-0.1.5-517e16e5c9ab9497f0af34e858a31f95727a1377",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -587,7 +589,7 @@
           },
           {
             "name": "lava_types",
-            "package_key": "lava-types-0.1.2",
+            "package_key": "lava-types-0.1.2-61a43b423cd87ba8e3a2f672668814bcb1e06868",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -631,7 +633,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-contracts-0.1.2": {
+      "lava-contracts-0.1.3-f9061f497a70df26e02ca2d15564035f02448541": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -647,7 +649,7 @@
           },
           {
             "name": "lava_core",
-            "package_key": "lava-core-0.1.6",
+            "package_key": "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -671,7 +673,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-core-0.1.6": {
+      "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -731,7 +733,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-eval-0.1.7": {
+      "lava-eval-0.1.8-d4af19fae2486900c9f664a28e26291a35c768cc": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -747,7 +749,7 @@
           },
           {
             "name": "lava_arch",
-            "package_key": "lava-arch-0.1.3",
+            "package_key": "lava-arch-0.1.4-010fba4abe666f8658bffae2cd827d3f45ea593c",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -757,7 +759,7 @@
           },
           {
             "name": "lava_core",
-            "package_key": "lava-core-0.1.6",
+            "package_key": "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -767,7 +769,7 @@
           },
           {
             "name": "lava_schema",
-            "package_key": "lava-schema-0.1.4",
+            "package_key": "lava-schema-0.1.5-517e16e5c9ab9497f0af34e858a31f95727a1377",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -777,7 +779,7 @@
           },
           {
             "name": "lava_types",
-            "package_key": "lava-types-0.1.2",
+            "package_key": "lava-types-0.1.2-61a43b423cd87ba8e3a2f672668814bcb1e06868",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -821,7 +823,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-runtime-0.1.5": {
+      "lava-runtime-0.1.6-1f16ff3a4aae1fe9495aabde942813da6e2af823": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -837,7 +839,7 @@
           },
           {
             "name": "lava_core",
-            "package_key": "lava-core-0.1.6",
+            "package_key": "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -847,7 +849,7 @@
           },
           {
             "name": "lava_eval",
-            "package_key": "lava-eval-0.1.7",
+            "package_key": "lava-eval-0.1.8-d4af19fae2486900c9f664a28e26291a35c768cc",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -857,7 +859,7 @@
           },
           {
             "name": "lava_schema",
-            "package_key": "lava-schema-0.1.4",
+            "package_key": "lava-schema-0.1.5-517e16e5c9ab9497f0af34e858a31f95727a1377",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -901,7 +903,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-schema-0.1.4": {
+      "lava-schema-0.1.5-517e16e5c9ab9497f0af34e858a31f95727a1377": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -917,7 +919,7 @@
           },
           {
             "name": "lava_types",
-            "package_key": "lava-types-0.1.2",
+            "package_key": "lava-types-0.1.2-61a43b423cd87ba8e3a2f672668814bcb1e06868",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -951,7 +953,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-types-0.1.2": {
+      "lava-types-0.1.2-61a43b423cd87ba8e3a2f672668814bcb1e06868": {
         "runtime_dependencies": [
           {
             "name": "serde",
@@ -987,11 +989,11 @@
           "std"
         ]
       },
-      "magma-config-0.1.1": {
+      "magma-config-0.1.10-5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c": {
         "runtime_dependencies": [
           {
             "name": "magma_types",
-            "package_key": "magma-types-0.1.1",
+            "package_key": "magma-types-0.1.10-5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1045,7 +1047,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "magma-lava-0.2.3": {
+      "magma-lava-0.2.5": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -1061,7 +1063,7 @@
           },
           {
             "name": "lava_architectures",
-            "package_key": "lava-architectures-0.1.13",
+            "package_key": "lava-architectures-0.1.14-62e6627114d0a196c31130f5cbeb404ac8c5e5f3",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1071,7 +1073,7 @@
           },
           {
             "name": "lava_core",
-            "package_key": "lava-core-0.1.6",
+            "package_key": "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1081,7 +1083,7 @@
           },
           {
             "name": "lava_eval",
-            "package_key": "lava-eval-0.1.7",
+            "package_key": "lava-eval-0.1.8-d4af19fae2486900c9f664a28e26291a35c768cc",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1091,7 +1093,7 @@
           },
           {
             "name": "lava_runtime",
-            "package_key": "lava-runtime-0.1.5",
+            "package_key": "lava-runtime-0.1.6-1f16ff3a4aae1fe9495aabde942813da6e2af823",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1101,7 +1103,7 @@
           },
           {
             "name": "lava_schema",
-            "package_key": "lava-schema-0.1.4",
+            "package_key": "lava-schema-0.1.5-517e16e5c9ab9497f0af34e858a31f95727a1377",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1111,7 +1113,7 @@
           },
           {
             "name": "magma_config",
-            "package_key": "magma-config-0.1.1",
+            "package_key": "magma-config-0.1.10-5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1155,11 +1157,11 @@
         "build_dependencies": [],
         "features": []
       },
-      "magma-types-0.1.1": {
+      "magma-types-0.1.10-5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c": {
         "runtime_dependencies": [
           {
             "name": "chrono",
-            "package_key": "chrono-0.4.44",
+            "package_key": "chrono-0.4.45",
             "kind": "normal",
             "features": [
               "serde"
@@ -1171,7 +1173,7 @@
           },
           {
             "name": "gen_platform",
-            "package_key": "gen-platform-0.1.5",
+            "package_key": "gen-platform-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1181,7 +1183,7 @@
           },
           {
             "name": "gen_types",
-            "package_key": "gen-types-0.1.5",
+            "package_key": "gen-types-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1235,11 +1237,11 @@
           },
           {
             "name": "uuid",
-            "package_key": "uuid-1.23.1",
+            "package_key": "uuid-1.23.4",
             "kind": "normal",
             "features": [
-              "v4",
-              "serde"
+              "serde",
+              "v4"
             ],
             "uses_default_features": true,
             "optional": false,
@@ -1250,7 +1252,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "memchr-2.8.0": {
+      "memchr-2.8.3": {
         "runtime_dependencies": [],
         "build_dependencies": [],
         "features": [
@@ -1308,14 +1310,14 @@
           "proc-macro"
         ]
       },
-      "quote-1.0.45": {
+      "quote-1.0.46": {
         "runtime_dependencies": [
           {
             "name": "proc_macro2",
             "package_key": "proc-macro2-1.0.106",
             "kind": "normal",
             "features": [],
-            "uses_default_features": true,
+            "uses_default_features": false,
             "optional": false,
             "target": null,
             "tree": "target"
@@ -1398,7 +1400,7 @@
           },
           {
             "name": "quote",
-            "package_key": "quote-1.0.45",
+            "package_key": "quote-1.0.46",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1418,7 +1420,7 @@
           },
           {
             "name": "syn",
-            "package_key": "syn-2.0.117",
+            "package_key": "syn-2.0.118",
             "kind": "normal",
             "features": [
               "extra-traits"
@@ -1459,7 +1461,6 @@
         ],
         "build_dependencies": [],
         "features": [
-          "alloc",
           "default",
           "derive",
           "serde_derive",
@@ -1470,7 +1471,6 @@
         "runtime_dependencies": [],
         "build_dependencies": [],
         "features": [
-          "alloc",
           "result",
           "std"
         ]
@@ -1481,15 +1481,17 @@
             "name": "proc_macro2",
             "package_key": "proc-macro2-1.0.106",
             "kind": "normal",
-            "features": [],
-            "uses_default_features": true,
+            "features": [
+              "proc-macro"
+            ],
+            "uses_default_features": false,
             "optional": false,
             "target": null,
             "tree": "target"
           },
           {
             "name": "quote",
-            "package_key": "quote-1.0.45",
+            "package_key": "quote-1.0.46",
             "kind": "normal",
             "features": [
               "proc-macro"
@@ -1501,7 +1503,7 @@
           },
           {
             "name": "syn",
-            "package_key": "syn-2.0.117",
+            "package_key": "syn-2.0.118",
             "kind": "normal",
             "features": [
               "clone-impls",
@@ -1528,14 +1530,14 @@
             "package_key": "proc-macro2-1.0.106",
             "kind": "normal",
             "features": [],
-            "uses_default_features": true,
+            "uses_default_features": false,
             "optional": false,
             "target": null,
             "tree": "target"
           },
           {
             "name": "quote",
-            "package_key": "quote-1.0.45",
+            "package_key": "quote-1.0.46",
             "kind": "normal",
             "features": [],
             "uses_default_features": false,
@@ -1545,7 +1547,7 @@
           },
           {
             "name": "syn",
-            "package_key": "syn-2.0.117",
+            "package_key": "syn-2.0.118",
             "kind": "normal",
             "features": [
               "clone-impls",
@@ -1576,7 +1578,7 @@
           },
           {
             "name": "memchr",
-            "package_key": "memchr-2.8.0",
+            "package_key": "memchr-2.8.3",
             "kind": "normal",
             "features": [],
             "uses_default_features": false,
@@ -1667,7 +1669,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "shlex-1.3.0": {
+      "shlex-2.0.1": {
         "runtime_dependencies": [],
         "build_dependencies": [],
         "features": [
@@ -1675,21 +1677,21 @@
           "std"
         ]
       },
-      "syn-2.0.117": {
+      "syn-2.0.118": {
         "runtime_dependencies": [
           {
             "name": "proc_macro2",
             "package_key": "proc-macro2-1.0.106",
             "kind": "normal",
             "features": [],
-            "uses_default_features": true,
+            "uses_default_features": false,
             "optional": false,
             "target": null,
             "tree": "target"
           },
           {
             "name": "quote",
-            "package_key": "quote-1.0.45",
+            "package_key": "quote-1.0.46",
             "kind": "normal",
             "features": [],
             "uses_default_features": false,
@@ -1755,7 +1757,7 @@
           },
           {
             "name": "quote",
-            "package_key": "quote-1.0.45",
+            "package_key": "quote-1.0.46",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1765,7 +1767,7 @@
           },
           {
             "name": "syn",
-            "package_key": "syn-2.0.117",
+            "package_key": "syn-2.0.118",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1795,7 +1797,7 @@
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
-            "optional": false,
+            "optional": true,
             "target": null,
             "tree": "host"
           },
@@ -1804,7 +1806,7 @@
             "package_key": "tracing-core-0.1.36",
             "kind": "normal",
             "features": [],
-            "uses_default_features": true,
+            "uses_default_features": false,
             "optional": false,
             "target": null,
             "tree": "target"
@@ -1832,7 +1834,7 @@
           },
           {
             "name": "quote",
-            "package_key": "quote-1.0.45",
+            "package_key": "quote-1.0.46",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1842,16 +1844,16 @@
           },
           {
             "name": "syn",
-            "package_key": "syn-2.0.117",
+            "package_key": "syn-2.0.118",
             "kind": "normal",
             "features": [
+              "clone-impls",
+              "extra-traits",
               "full",
               "parsing",
               "printing",
-              "visit-mut",
-              "clone-impls",
-              "extra-traits",
-              "proc-macro"
+              "proc-macro",
+              "visit-mut"
             ],
             "uses_default_features": false,
             "optional": false,
@@ -1891,11 +1893,11 @@
         "build_dependencies": [],
         "features": []
       },
-      "uuid-1.23.1": {
+      "uuid-1.23.4": {
         "runtime_dependencies": [
           {
             "name": "getrandom",
-            "package_key": "getrandom-0.4.2",
+            "package_key": "getrandom-0.4.3",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1946,7 +1948,7 @@
               },
               {
                 "name": "arrayvec",
-                "package_key": "arrayvec-0.7.6",
+                "package_key": "arrayvec-0.7.8",
                 "kind": "normal",
                 "features": [],
                 "uses_default_features": false,
@@ -1978,7 +1980,7 @@
             "build_dependencies": [
               {
                 "name": "cc",
-                "package_key": "cc-1.2.62",
+                "package_key": "cc-1.2.66",
                 "kind": "build",
                 "features": [],
                 "uses_default_features": true,
@@ -2020,6 +2022,148 @@
           }
         }
       },
+      "aarch64-unknown-linux-gnu": {
+        "overrides": {
+          "blake3-1.8.5": {
+            "runtime_dependencies": [
+              {
+                "name": "arrayref",
+                "package_key": "arrayref-0.3.9",
+                "kind": "normal",
+                "features": [],
+                "uses_default_features": true,
+                "optional": false,
+                "target": null,
+                "tree": "target"
+              },
+              {
+                "name": "arrayvec",
+                "package_key": "arrayvec-0.7.8",
+                "kind": "normal",
+                "features": [],
+                "uses_default_features": false,
+                "optional": false,
+                "target": null,
+                "tree": "target"
+              },
+              {
+                "name": "cfg_if",
+                "package_key": "cfg-if-1.0.4",
+                "kind": "normal",
+                "features": [],
+                "uses_default_features": true,
+                "optional": false,
+                "target": null,
+                "tree": "target"
+              },
+              {
+                "name": "constant_time_eq",
+                "package_key": "constant_time_eq-0.4.2",
+                "kind": "normal",
+                "features": [],
+                "uses_default_features": false,
+                "optional": false,
+                "target": null,
+                "tree": "target"
+              }
+            ],
+            "build_dependencies": [
+              {
+                "name": "cc",
+                "package_key": "cc-1.2.66",
+                "kind": "build",
+                "features": [],
+                "uses_default_features": true,
+                "optional": false,
+                "target": null,
+                "tree": "host"
+              }
+            ],
+            "features": [
+              "default",
+              "std"
+            ]
+          },
+          "iana-time-zone-0.1.65": {
+            "runtime_dependencies": [],
+            "build_dependencies": [],
+            "features": [
+              "fallback"
+            ]
+          }
+        }
+      },
+      "aarch64-unknown-linux-musl": {
+        "overrides": {
+          "blake3-1.8.5": {
+            "runtime_dependencies": [
+              {
+                "name": "arrayref",
+                "package_key": "arrayref-0.3.9",
+                "kind": "normal",
+                "features": [],
+                "uses_default_features": true,
+                "optional": false,
+                "target": null,
+                "tree": "target"
+              },
+              {
+                "name": "arrayvec",
+                "package_key": "arrayvec-0.7.8",
+                "kind": "normal",
+                "features": [],
+                "uses_default_features": false,
+                "optional": false,
+                "target": null,
+                "tree": "target"
+              },
+              {
+                "name": "cfg_if",
+                "package_key": "cfg-if-1.0.4",
+                "kind": "normal",
+                "features": [],
+                "uses_default_features": true,
+                "optional": false,
+                "target": null,
+                "tree": "target"
+              },
+              {
+                "name": "constant_time_eq",
+                "package_key": "constant_time_eq-0.4.2",
+                "kind": "normal",
+                "features": [],
+                "uses_default_features": false,
+                "optional": false,
+                "target": null,
+                "tree": "target"
+              }
+            ],
+            "build_dependencies": [
+              {
+                "name": "cc",
+                "package_key": "cc-1.2.66",
+                "kind": "build",
+                "features": [],
+                "uses_default_features": true,
+                "optional": false,
+                "target": null,
+                "tree": "host"
+              }
+            ],
+            "features": [
+              "default",
+              "std"
+            ]
+          },
+          "iana-time-zone-0.1.65": {
+            "runtime_dependencies": [],
+            "build_dependencies": [],
+            "features": [
+              "fallback"
+            ]
+          }
+        }
+      },
       "x86_64-apple-darwin": {
         "overrides": {
           "blake3-1.8.5": {
@@ -2036,7 +2180,7 @@
               },
               {
                 "name": "arrayvec",
-                "package_key": "arrayvec-0.7.6",
+                "package_key": "arrayvec-0.7.8",
                 "kind": "normal",
                 "features": [],
                 "uses_default_features": false,
@@ -2078,7 +2222,7 @@
             "build_dependencies": [
               {
                 "name": "cc",
-                "package_key": "cc-1.2.62",
+                "package_key": "cc-1.2.66",
                 "kind": "build",
                 "features": [],
                 "uses_default_features": true,
@@ -2141,7 +2285,7 @@
               },
               {
                 "name": "arrayvec",
-                "package_key": "arrayvec-0.7.6",
+                "package_key": "arrayvec-0.7.8",
                 "kind": "normal",
                 "features": [],
                 "uses_default_features": false,
@@ -2183,7 +2327,7 @@
             "build_dependencies": [
               {
                 "name": "cc",
-                "package_key": "cc-1.2.62",
+                "package_key": "cc-1.2.66",
                 "kind": "build",
                 "features": [],
                 "uses_default_features": true,
@@ -2227,7 +2371,7 @@
               },
               {
                 "name": "arrayvec",
-                "package_key": "arrayvec-0.7.6",
+                "package_key": "arrayvec-0.7.8",
                 "kind": "normal",
                 "features": [],
                 "uses_default_features": false,
@@ -2269,7 +2413,7 @@
             "build_dependencies": [
               {
                 "name": "cc",
-                "package_key": "cc-1.2.62",
+                "package_key": "cc-1.2.66",
                 "kind": "build",
                 "features": [],
                 "uses_default_features": true,
@@ -2296,148 +2440,6 @@
             ]
           }
         }
-      },
-      "aarch64-unknown-linux-gnu": {
-        "overrides": {
-          "blake3-1.8.5": {
-            "runtime_dependencies": [
-              {
-                "name": "arrayref",
-                "package_key": "arrayref-0.3.9",
-                "kind": "normal",
-                "features": [],
-                "uses_default_features": true,
-                "optional": false,
-                "target": null,
-                "tree": "target"
-              },
-              {
-                "name": "arrayvec",
-                "package_key": "arrayvec-0.7.6",
-                "kind": "normal",
-                "features": [],
-                "uses_default_features": false,
-                "optional": false,
-                "target": null,
-                "tree": "target"
-              },
-              {
-                "name": "cfg_if",
-                "package_key": "cfg-if-1.0.4",
-                "kind": "normal",
-                "features": [],
-                "uses_default_features": true,
-                "optional": false,
-                "target": null,
-                "tree": "target"
-              },
-              {
-                "name": "constant_time_eq",
-                "package_key": "constant_time_eq-0.4.2",
-                "kind": "normal",
-                "features": [],
-                "uses_default_features": false,
-                "optional": false,
-                "target": null,
-                "tree": "target"
-              }
-            ],
-            "build_dependencies": [
-              {
-                "name": "cc",
-                "package_key": "cc-1.2.62",
-                "kind": "build",
-                "features": [],
-                "uses_default_features": true,
-                "optional": false,
-                "target": null,
-                "tree": "host"
-              }
-            ],
-            "features": [
-              "default",
-              "std"
-            ]
-          },
-          "iana-time-zone-0.1.65": {
-            "runtime_dependencies": [],
-            "build_dependencies": [],
-            "features": [
-              "fallback"
-            ]
-          }
-        }
-      },
-      "aarch64-unknown-linux-musl": {
-        "overrides": {
-          "blake3-1.8.5": {
-            "runtime_dependencies": [
-              {
-                "name": "arrayref",
-                "package_key": "arrayref-0.3.9",
-                "kind": "normal",
-                "features": [],
-                "uses_default_features": true,
-                "optional": false,
-                "target": null,
-                "tree": "target"
-              },
-              {
-                "name": "arrayvec",
-                "package_key": "arrayvec-0.7.6",
-                "kind": "normal",
-                "features": [],
-                "uses_default_features": false,
-                "optional": false,
-                "target": null,
-                "tree": "target"
-              },
-              {
-                "name": "cfg_if",
-                "package_key": "cfg-if-1.0.4",
-                "kind": "normal",
-                "features": [],
-                "uses_default_features": true,
-                "optional": false,
-                "target": null,
-                "tree": "target"
-              },
-              {
-                "name": "constant_time_eq",
-                "package_key": "constant_time_eq-0.4.2",
-                "kind": "normal",
-                "features": [],
-                "uses_default_features": false,
-                "optional": false,
-                "target": null,
-                "tree": "target"
-              }
-            ],
-            "build_dependencies": [
-              {
-                "name": "cc",
-                "package_key": "cc-1.2.62",
-                "kind": "build",
-                "features": [],
-                "uses_default_features": true,
-                "optional": false,
-                "target": null,
-                "tree": "host"
-              }
-            ],
-            "features": [
-              "default",
-              "std"
-            ]
-          },
-          "iana-time-zone-0.1.65": {
-            "runtime_dependencies": [],
-            "build_dependencies": [],
-            "features": [
-              "fallback"
-            ]
-          }
-        }
       }
     }
   },
@@ -2445,7 +2447,7 @@
     "arrayref-0.3.9": {
       "edition": "2015"
     },
-    "arrayvec-0.7.6": {
+    "arrayvec-0.7.8": {
       "edition": "2018"
     },
     "autocfg-1.5.1": {
@@ -2455,13 +2457,13 @@
       "edition": "2024",
       "build_script": "build.rs"
     },
-    "cc-1.2.62": {
+    "cc-1.2.66": {
       "edition": "2018"
     },
     "cfg-if-1.0.4": {
       "edition": "2018"
     },
-    "chrono-0.4.44": {
+    "chrono-0.4.45": {
       "edition": "2021"
     },
     "constant_time_eq-0.4.2": {
@@ -2469,6 +2471,9 @@
     },
     "core-foundation-sys-0.8.7": {
       "edition": "2018"
+    },
+    "cpufeatures-0.3.0": {
+      "edition": "2024"
     },
     "dyn-clone-1.0.20": {
       "edition": "2018"
@@ -2479,17 +2484,17 @@
     "find-msvc-tools-0.1.9": {
       "edition": "2018"
     },
-    "gen-macros-0.1.5": {
+    "gen-macros-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": {
       "edition": "2024",
       "proc_macro": true
     },
-    "gen-platform-0.1.5": {
+    "gen-platform-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": {
       "edition": "2024"
     },
-    "gen-types-0.1.5": {
+    "gen-types-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": {
       "edition": "2024"
     },
-    "getrandom-0.4.2": {
+    "getrandom-0.4.3": {
       "edition": "2024",
       "build_script": "build.rs"
     },
@@ -2508,48 +2513,48 @@
     "itoa-1.0.18": {
       "edition": "2021"
     },
-    "lava-arch-0.1.3": {
+    "lava-arch-0.1.4-010fba4abe666f8658bffae2cd827d3f45ea593c": {
       "edition": "2024"
     },
-    "lava-architectures-0.1.13": {
+    "lava-architectures-0.1.14-62e6627114d0a196c31130f5cbeb404ac8c5e5f3": {
       "edition": "2024"
     },
-    "lava-contracts-0.1.2": {
+    "lava-contracts-0.1.3-f9061f497a70df26e02ca2d15564035f02448541": {
       "edition": "2024"
     },
-    "lava-core-0.1.6": {
+    "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df": {
       "edition": "2024"
     },
-    "lava-eval-0.1.7": {
+    "lava-eval-0.1.8-d4af19fae2486900c9f664a28e26291a35c768cc": {
       "edition": "2024"
     },
-    "lava-runtime-0.1.5": {
+    "lava-runtime-0.1.6-1f16ff3a4aae1fe9495aabde942813da6e2af823": {
       "edition": "2024"
     },
-    "lava-schema-0.1.4": {
+    "lava-schema-0.1.5-517e16e5c9ab9497f0af34e858a31f95727a1377": {
       "edition": "2024"
     },
-    "lava-types-0.1.2": {
+    "lava-types-0.1.2-61a43b423cd87ba8e3a2f672668814bcb1e06868": {
       "edition": "2024"
     },
     "libc-0.2.186": {
       "edition": "2021",
       "build_script": "build.rs"
     },
-    "magma-config-0.1.1": {
+    "magma-config-0.1.10-5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c": {
       "edition": "2024"
     },
-    "magma-lava-0.2.3": {
+    "magma-lava-0.2.5": {
       "edition": "2024",
       "lib_target": {
         "name": "magma_lava",
         "path": "src/lib.rs"
       }
     },
-    "magma-types-0.1.1": {
+    "magma-types-0.1.10-5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c": {
       "edition": "2024"
     },
-    "memchr-2.8.0": {
+    "memchr-2.8.3": {
       "edition": "2021"
     },
     "num-traits-0.2.19": {
@@ -2566,7 +2571,7 @@
       "edition": "2021",
       "build_script": "build.rs"
     },
-    "quote-1.0.45": {
+    "quote-1.0.46": {
       "edition": "2021",
       "build_script": "build.rs"
     },
@@ -2607,10 +2612,10 @@
     "serde_yaml-0.9.34+deprecated": {
       "edition": "2021"
     },
-    "shlex-1.3.0": {
-      "edition": "2015"
+    "shlex-2.0.1": {
+      "edition": "2018"
     },
-    "syn-2.0.117": {
+    "syn-2.0.118": {
       "edition": "2021"
     },
     "thiserror-2.0.18": {
@@ -2647,31 +2652,28 @@
         }
       ]
     },
-    "uuid-1.23.1": {
+    "uuid-1.23.4": {
       "edition": "2021"
     },
     "zmij-1.0.21": {
       "edition": "2021",
       "build_script": "build.rs"
-    },
-    "cpufeatures-0.3.0": {
-      "edition": "2024"
     }
   },
   "git_nar_sha256": {
-    "gen-macros-0.1.5": "sha256-6Yi+KZ/mOyGAdnAmAWRW/FursJnxNRw6MxmVySkhrj0=",
-    "gen-platform-0.1.5": "sha256-6Yi+KZ/mOyGAdnAmAWRW/FursJnxNRw6MxmVySkhrj0=",
-    "gen-types-0.1.5": "sha256-6Yi+KZ/mOyGAdnAmAWRW/FursJnxNRw6MxmVySkhrj0=",
-    "lava-arch-0.1.3": "sha256-DMSAZVMT4mv/dLpGPAO1lP/tVVpqs4JWySMWCdF49ZY=",
-    "lava-architectures-0.1.13": "sha256-dtysUoXlkoV6N0Qf0gFL5z6s5IxjWrGYk83vjwO+/08=",
-    "lava-contracts-0.1.2": "sha256-rchGLowuZEjO1YgNULlr+FTCFo8tcKE6qvVVYDRNyfI=",
-    "lava-core-0.1.6": "sha256-jaTPA7QstAvhA3iRDx9U6PJMrPeythMd6KJJOl2KxNc=",
-    "lava-eval-0.1.7": "sha256-S85g7ndTr5fpcK4kC5D0ZEHOKhS1qK3ndb3mYwId9so=",
-    "lava-runtime-0.1.5": "sha256-zeyPoKprVCs3y5gG4Dsf4hxPscwBxCvvwv5gXD2psbw=",
-    "lava-schema-0.1.4": "sha256-ED2KQfMTf9dJ0P67irdk+aCZ2vztlYFgWGfSqrz7tsY=",
-    "lava-types-0.1.2": "sha256-nQ/LuOQx4QyFueiuo9pFmAwzyGnbcSns9PhZDf0duZ0=",
-    "magma-config-0.1.1": "sha256-0K/Duq7G4ttKYWQUvPkgkLiQZkmlVcMcoH6iDwZUHNQ=",
-    "magma-types-0.1.1": "sha256-0K/Duq7G4ttKYWQUvPkgkLiQZkmlVcMcoH6iDwZUHNQ="
+    "gen-macros-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": "sha256-lPsm5o3j8A0d8wzeD/DwZdJOaSnddTkLAISAp/7gPk4=",
+    "gen-platform-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": "sha256-lPsm5o3j8A0d8wzeD/DwZdJOaSnddTkLAISAp/7gPk4=",
+    "gen-types-0.1.18-8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2": "sha256-lPsm5o3j8A0d8wzeD/DwZdJOaSnddTkLAISAp/7gPk4=",
+    "lava-arch-0.1.4-010fba4abe666f8658bffae2cd827d3f45ea593c": "sha256-2+HDeBxRuIlYwlRcv2ObFsZceu/weWqC96zvgT0x9/g=",
+    "lava-architectures-0.1.14-62e6627114d0a196c31130f5cbeb404ac8c5e5f3": "sha256-JWDeMhfgDVK1QabeAGVcRJBYMH+9RMpZnkJ8KpWL9So=",
+    "lava-contracts-0.1.3-f9061f497a70df26e02ca2d15564035f02448541": "sha256-1/bQlkWnh0h5QbR3J7oQF9RJkL/v3kqfj3YxVb/fwOY=",
+    "lava-core-0.1.6-610f5231d47cfaddad053b4c351ce6ef663002df": "sha256-IKxgJsK/Ht+aMY4SikIkZRNi6pMKMpMKA503Z8DYObg=",
+    "lava-eval-0.1.8-d4af19fae2486900c9f664a28e26291a35c768cc": "sha256-AkQrFb0RvvClbNrM69EIZIFkjCPovzIP85gRQaoaQi0=",
+    "lava-runtime-0.1.6-1f16ff3a4aae1fe9495aabde942813da6e2af823": "sha256-0u4Qx7nEaWyfCdRRQcJ9VryjLp7WXEd8Y1yUC3YGtR0=",
+    "lava-schema-0.1.5-517e16e5c9ab9497f0af34e858a31f95727a1377": "sha256-7G/wG4pUDC6jYu1LZPxw2F0AaKtKCfhJ7lUsfDxoFe8=",
+    "lava-types-0.1.2-61a43b423cd87ba8e3a2f672668814bcb1e06868": "sha256-n1JWq5kNI4Lqk7oAD4UL3GV2C0VI5jFMvFz+kDR/ixU=",
+    "magma-config-0.1.10-5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c": "sha256-fQfiMXclKGTtGb+QEoF5hQ/DYN7ntyOTEJKW5jPkvog=",
+    "magma-types-0.1.10-5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c": "sha256-fQfiMXclKGTtGb+QEoF5hQ/DYN7ntyOTEJKW5jPkvog="
   },
   "flake_metadata": {}
 }
