@@ -484,14 +484,9 @@ rec {
       };
       "gen-macros" = rec {
         crateName = "gen-macros";
-        version = "0.1.18";
+        version = "0.1.34";
         edition = "2024";
-        workspace_member = null;
-        src = pkgs.fetchgit {
-          url = "https://github.com/pleme-io/gen";
-          rev = "8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2";
-          sha256 = "0kiyw3zag044005kjxfx55llxlk5y3q0zphcycfhvw73ipk2dywl";
-        };
+        sha256 = "1v95haq8116dn26nkkrdb67m7byp5j6cb5pdsah4pbbx865nwzg8";
         procMacro = true;
         libName = "gen_macros";
         authors = [
@@ -516,14 +511,9 @@ rec {
       };
       "gen-platform" = rec {
         crateName = "gen-platform";
-        version = "0.1.18";
+        version = "0.1.34";
         edition = "2024";
-        workspace_member = null;
-        src = pkgs.fetchgit {
-          url = "https://github.com/pleme-io/gen";
-          rev = "8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2";
-          sha256 = "0kiyw3zag044005kjxfx55llxlk5y3q0zphcycfhvw73ipk2dywl";
-        };
+        sha256 = "10v7vzz6yfm0h4lvb2kk1a8p3qq5zmzxvaam9xj28fs13fql40il";
         libName = "gen_platform";
         authors = [
           "pleme-io"
@@ -559,14 +549,9 @@ rec {
       };
       "gen-types" = rec {
         crateName = "gen-types";
-        version = "0.1.18";
+        version = "0.1.34";
         edition = "2024";
-        workspace_member = null;
-        src = pkgs.fetchgit {
-          url = "https://github.com/pleme-io/gen";
-          rev = "8ff43f2c8fae5d7b46a499eac0dc7c3f96481ae2";
-          sha256 = "0kiyw3zag044005kjxfx55llxlk5y3q0zphcycfhvw73ipk2dywl";
-        };
+        sha256 = "053lmy69jzvzcibmb07skzjfdyfiljvqrh2lfhprx6gx76s3kyhy";
         libName = "gen_types";
         authors = [
           "pleme-io"
@@ -1220,14 +1205,9 @@ rec {
       };
       "magma-config" = rec {
         crateName = "magma-config";
-        version = "0.1.10";
+        version = "0.1.20";
         edition = "2024";
-        workspace_member = null;
-        src = pkgs.fetchgit {
-          url = "https://github.com/pleme-io/magma";
-          rev = "5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c";
-          sha256 = "125ywhryd5lj229j7dz7vrhc63w5g60i545z37nn8a15fwqy41vx";
-        };
+        sha256 = "0b2s9bqhns3kgcjwmwy35hv91sj6y1bdzczhdwkinzdnsmcmiq0b";
         libName = "magma_config";
         authors = [
           "pleme-io"
@@ -1259,7 +1239,7 @@ rec {
       };
       "magma-lava" = rec {
         crateName = "magma-lava";
-        version = "0.2.6";
+        version = "0.2.7";
         edition = "2024";
         src = lib.cleanSourceWith { filter = sourceFilter;  src = ./.; };
         libName = "magma_lava";
@@ -1314,14 +1294,9 @@ rec {
       };
       "magma-types" = rec {
         crateName = "magma-types";
-        version = "0.1.10";
+        version = "0.1.20";
         edition = "2024";
-        workspace_member = null;
-        src = pkgs.fetchgit {
-          url = "https://github.com/pleme-io/magma";
-          rev = "5187f648cfd0b25aed5eaa6f487aa6a46e52ec7c";
-          sha256 = "125ywhryd5lj229j7dz7vrhc63w5g60i545z37nn8a15fwqy41vx";
-        };
+        sha256 = "0kx13jsjsawmbq6vvspv6anbjmy6gffwg6dia76xbz0ry50vhn68";
         libName = "magma_types";
         authors = [
           "pleme-io"
