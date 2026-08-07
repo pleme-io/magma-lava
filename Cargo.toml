@@ -6,7 +6,7 @@ license = "MIT"
 name = "magma-lava"
 readme = "README.md"
 repository = "https://github.com/pleme-io/magma-lava"
-version = "0.2.5"
+version = "0.2.6"
 
 [lib]
 name = "magma_lava"
