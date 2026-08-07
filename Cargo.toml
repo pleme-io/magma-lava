@@ -30,4 +30,4 @@ lava-architectures = "0.1.16"
 # Nix sandboxed image builds painful. plan_changes() does the empty-
 # state diff directly off magma-config's parsed Config, which is the
 # only shape we need until L8.3 wires a real state backend.
-magma-config = { git = "https://github.com/pleme-io/magma", branch = "main" }
+magma-config = "0.1.20"
