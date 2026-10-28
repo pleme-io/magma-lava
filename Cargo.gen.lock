@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "cargo_lock_sha256": "80da5d1261111d1dc598dfa719ef1cce29ccce9e9a8b849e7f6296bbb8ec86f3",
+  "cargo_lock_sha256": "e478c823a4b0b902846fafe22b43216716176c272551dd467729e088e71bd19c",
   "manifest_sha256": {
     "Cargo.toml": "ffc7a79b969c918084bc9cdcf84b4a0d294bbaa52e9a9473947837d44ec59351"
   },
@@ -126,7 +126,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "gen-macros-0.1.34": {
+      "gen-macros-0.1.55": {
         "runtime_dependencies": [
           {
             "name": "proc_macro2",
@@ -165,11 +165,11 @@
         "build_dependencies": [],
         "features": []
       },
-      "gen-platform-0.1.34": {
+      "gen-platform-0.1.55": {
         "runtime_dependencies": [
           {
             "name": "gen_macros",
-            "package_key": "gen-macros-0.1.34",
+            "package_key": "gen-macros-0.1.55",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -179,7 +179,7 @@
           },
           {
             "name": "gen_types",
-            "package_key": "gen-types-0.1.34",
+            "package_key": "gen-types-0.1.55",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -233,7 +233,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "gen-types-0.1.34": {
+      "gen-types-0.1.55": {
         "runtime_dependencies": [
           {
             "name": "blake3",
@@ -466,7 +466,7 @@
         "build_dependencies": [],
         "features": []
       },
-      "lava-arch-0.1.6": {
+      "lava-arch-0.1.7": {
         "runtime_dependencies": [
           {
             "name": "indexmap",
@@ -482,7 +482,7 @@
           },
           {
             "name": "lava_core",
-            "package_key": "lava-core-0.1.7",
+            "package_key": "lava-core-0.2.5",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -542,7 +542,7 @@
           },
           {
             "name": "lava_arch",
-            "package_key": "lava-arch-0.1.6",
+            "package_key": "lava-arch-0.1.7",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -736,6 +736,68 @@
         "build_dependencies": [],
         "features": []
       },
+      "lava-core-0.2.5": {
+        "runtime_dependencies": [
+          {
+            "name": "indexmap",
+            "package_key": "indexmap-2.14.0",
+            "kind": "normal",
+            "features": [
+              "serde"
+            ],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          },
+          {
+            "name": "serde",
+            "package_key": "serde-1.0.229",
+            "kind": "normal",
+            "features": [
+              "derive"
+            ],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          },
+          {
+            "name": "serde_json",
+            "package_key": "serde_json-1.0.151",
+            "kind": "normal",
+            "features": [
+              "preserve_order"
+            ],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          },
+          {
+            "name": "serde_norway",
+            "package_key": "serde_norway-0.9.42",
+            "kind": "normal",
+            "features": [],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          },
+          {
+            "name": "thiserror",
+            "package_key": "thiserror-2.0.19",
+            "kind": "normal",
+            "features": [],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          }
+        ],
+        "build_dependencies": [],
+        "features": []
+      },
       "lava-eval-0.1.10": {
         "runtime_dependencies": [
           {
@@ -752,7 +814,7 @@
           },
           {
             "name": "lava_arch",
-            "package_key": "lava-arch-0.1.6",
+            "package_key": "lava-arch-0.1.7",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1176,7 +1238,7 @@
           },
           {
             "name": "gen_platform",
-            "package_key": "gen-platform-0.1.34",
+            "package_key": "gen-platform-0.1.55",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1186,7 +1248,7 @@
           },
           {
             "name": "gen_types",
-            "package_key": "gen-types-0.1.34",
+            "package_key": "gen-types-0.1.55",
             "kind": "normal",
             "features": [],
             "uses_default_features": true,
@@ -1570,6 +1632,16 @@
       "serde_json-1.0.151": {
         "runtime_dependencies": [
           {
+            "name": "indexmap",
+            "package_key": "indexmap-2.14.0",
+            "kind": "normal",
+            "features": [],
+            "uses_default_features": true,
+            "optional": true,
+            "target": null,
+            "tree": "target"
+          },
+          {
             "name": "itoa",
             "package_key": "itoa-1.0.18",
             "kind": "normal",
@@ -1613,8 +1685,66 @@
         "build_dependencies": [],
         "features": [
           "default",
+          "indexmap",
+          "preserve_order",
           "std"
         ]
+      },
+      "serde_norway-0.9.42": {
+        "runtime_dependencies": [
+          {
+            "name": "indexmap",
+            "package_key": "indexmap-2.14.0",
+            "kind": "normal",
+            "features": [],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          },
+          {
+            "name": "itoa",
+            "package_key": "itoa-1.0.18",
+            "kind": "normal",
+            "features": [],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          },
+          {
+            "name": "ryu",
+            "package_key": "ryu-1.0.23",
+            "kind": "normal",
+            "features": [],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          },
+          {
+            "name": "serde",
+            "package_key": "serde-1.0.229",
+            "kind": "normal",
+            "features": [],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          },
+          {
+            "name": "unsafe_libyaml_norway",
+            "package_key": "unsafe-libyaml-norway-0.2.15",
+            "kind": "normal",
+            "features": [],
+            "uses_default_features": true,
+            "optional": false,
+            "target": null,
+            "tree": "target"
+          }
+        ],
+        "build_dependencies": [],
+        "features": []
       },
       "serde_yaml-0.9.34+deprecated": {
         "runtime_dependencies": [
@@ -1935,6 +2065,11 @@
         "features": []
       },
       "unsafe-libyaml-0.2.11": {
+        "runtime_dependencies": [],
+        "build_dependencies": [],
+        "features": []
+      },
+      "unsafe-libyaml-norway-0.2.15": {
         "runtime_dependencies": [],
         "build_dependencies": [],
         "features": []
@@ -2530,14 +2665,14 @@
     "find-msvc-tools-0.1.10": {
       "edition": "2021"
     },
-    "gen-macros-0.1.34": {
+    "gen-macros-0.1.55": {
       "edition": "2024",
       "proc_macro": true
     },
-    "gen-platform-0.1.34": {
+    "gen-platform-0.1.55": {
       "edition": "2024"
     },
-    "gen-types-0.1.34": {
+    "gen-types-0.1.55": {
       "edition": "2024"
     },
     "getrandom-0.4.3": {
@@ -2559,7 +2694,7 @@
     "itoa-1.0.18": {
       "edition": "2021"
     },
-    "lava-arch-0.1.6": {
+    "lava-arch-0.1.7": {
       "edition": "2024"
     },
     "lava-architectures-0.1.16": {
@@ -2569,6 +2704,9 @@
       "edition": "2024"
     },
     "lava-core-0.1.7": {
+      "edition": "2024"
+    },
+    "lava-core-0.2.5": {
       "edition": "2024"
     },
     "lava-eval-0.1.10": {
@@ -2655,6 +2793,9 @@
       "edition": "2021",
       "build_script": "build.rs"
     },
+    "serde_norway-0.9.42": {
+      "edition": "2021"
+    },
     "serde_yaml-0.9.34+deprecated": {
       "edition": "2021"
     },
@@ -2689,6 +2830,19 @@
       "edition": "2021"
     },
     "unsafe-libyaml-0.2.11": {
+      "edition": "2021",
+      "binaries": [
+        {
+          "name": "run-emitter-test-suite",
+          "path": "src/bin/run-emitter-test-suite.rs"
+        },
+        {
+          "name": "run-parser-test-suite",
+          "path": "src/bin/run-parser-test-suite.rs"
+        }
+      ]
+    },
+    "unsafe-libyaml-norway-0.2.15": {
       "edition": "2021",
       "binaries": [
         {

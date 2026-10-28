@@ -144,9 +144,9 @@ dependencies = [
 
 [[package]]
 name = "gen-macros"
-version = "0.1.34"
+version = "0.1.55"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e87d6e8b417dad4ba0d2ed96c58c2cd7af538f592dcf698db0cd8480b08225ed"
+checksum = "522e8f4d0f4af82ee13c37507c12907c0587a982f8a17c8b378b14ae81ac24c8"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -155,9 +155,9 @@ dependencies = [
 
 [[package]]
 name = "gen-platform"
-version = "0.1.34"
+version = "0.1.55"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "340242b11b413b24644f55a9dd7ffd05e371910a738ab52981a03a6ffedf6783"
+checksum = "c2626761d01e0f872bb5ab92aa45fcfd1f820904a4da36f96b1b9a101ffa44fd"
 dependencies = [
  "gen-macros",
  "gen-types",
@@ -169,9 +169,9 @@ dependencies = [
 
 [[package]]
 name = "gen-types"
-version = "0.1.34"
+version = "0.1.55"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1efa39b439fd999e2f7454c08cb7a4d1f9e6e49ffa805557647f7f998caf7414"
+checksum = "f6d5dd9f013ffd978542607400199cf39f3fdff3feb36e52d13a4f7c20b6b0bd"
 dependencies = [
  "blake3",
  "chrono",
@@ -263,12 +263,12 @@ dependencies = [
 
 [[package]]
 name = "lava-arch"
-version = "0.1.6"
+version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7e0d64aa0892e04706682f27b99d5b43ade2d391f8de4505d5ddba6726b20dca"
+checksum = "294509fd44a259b049db34c5026f925014889b4b3588b8f1d6483ac507ba4d53"
 dependencies = [
  "indexmap",
- "lava-core",
+ "lava-core 0.2.5",
  "serde",
  "serde_json",
  "thiserror",
@@ -283,7 +283,7 @@ dependencies = [
  "indexmap",
  "lava-arch",
  "lava-contracts",
- "lava-core",
+ "lava-core 0.1.7",
  "lava-eval",
  "lava-schema",
  "lava-types",
@@ -299,7 +299,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f1cb7f9133eb1454c01144e4a9ce1d7bdd9ec3964fcade8a485ccb78498d58f"
 dependencies = [
  "indexmap",
- "lava-core",
+ "lava-core 0.1.7",
  "serde",
 ]
 
@@ -317,6 +317,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "lava-core"
+version = "0.2.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9d66938094d4cb1107bacbbd554f597c7b7261a1b56049d522a421ea65426752"
+dependencies = [
+ "indexmap",
+ "serde",
+ "serde_json",
+ "serde_norway",
+ "thiserror",
+]
+
+[[package]]
 name = "lava-eval"
 version = "0.1.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -324,7 +337,7 @@ checksum = "6056a673f3f724602afaa929fffb175c26342f4be83a4c66e7be26ba0ef20316"
 dependencies = [
  "indexmap",
  "lava-arch",
- "lava-core",
+ "lava-core 0.1.7",
  "lava-schema",
  "lava-types",
  "serde",
@@ -339,7 +352,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "30783f9a7655f7e01a6c72a0f84ef657a7bbd5136356cebab41745fd112f9fe6"
 dependencies = [
  "indexmap",
- "lava-core",
+ "lava-core 0.1.7",
  "lava-eval",
  "lava-schema",
  "serde",
@@ -400,7 +413,7 @@ version = "0.2.7"
 dependencies = [
  "indexmap",
  "lava-architectures",
- "lava-core",
+ "lava-core 0.1.7",
  "lava-eval",
  "lava-runtime",
  "lava-schema",
@@ -560,11 +573,25 @@ version = "1.0.151"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c841b55ecdae098c80dcae9cf767f6f8a0c2cdb3416bbef72181df4d0fe73f14"
 dependencies = [
+ "indexmap",
  "itoa",
  "memchr",
  "serde",
  "serde_core",
  "zmij",
+]
+
+[[package]]
+name = "serde_norway"
+version = "0.9.42"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e408f29489b5fd500fab51ff1484fc859bb655f32c671f307dcd733b72e8168c"
+dependencies = [
+ "indexmap",
+ "itoa",
+ "ryu",
+ "serde",
+ "unsafe-libyaml-norway",
 ]
 
 [[package]]
@@ -676,6 +703,12 @@ name = "unsafe-libyaml"
 version = "0.2.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "673aac59facbab8a9007c7f6108d11f63b603f7cabff99fabf650fea5c32b861"
+
+[[package]]
+name = "unsafe-libyaml-norway"
+version = "0.2.15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b39abd59bf32521c7f2301b52d05a6a2c975b6003521cbd0c6dc1582f0a22104"
 
 [[package]]
 name = "uuid"
